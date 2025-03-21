@@ -79,15 +79,15 @@ void print_i2c_address(uint8_t address) {
 	printf("I2C device found at address: 0x%02X\n", address);
 }
 
-void i2c_single_read(const uint8_t addr, const uint8_t reg) {
-	uint8_t buf[1] = {0x00};
-	i2c_err_t err = i2c_read(addr, reg, buf, 1);
-	if (err != I2C_OK) {
-		printf("I2C read failed with error code: %d\n", err);
-	} else {
-		printf("Read data: 0x%02X/0x%02X: 0x%02X\n", addr, reg, buf[0]);
-	}
-}
+// void i2c_single_read(const uint8_t addr, const uint8_t reg) {
+// 	uint8_t buf[1] = {0x00};
+// 	i2c_err_t err = i2c_read(addr, reg, buf, 1);
+// 	if (err != I2C_OK) {
+// 		printf("I2C read failed with error code: %d\n", err);
+// 	} else {
+// 		printf("Read data: 0x%02X/0x%02X: 0x%02X\n", addr, reg, buf[0]);
+// 	}
+// }
 
 void i2c_single_read_bin(const uint8_t addr, const uint8_t reg) {
 	uint8_t buf[1] = {0x00};
@@ -166,9 +166,9 @@ int main()
 	// 	printf("Temperature: %d\n", temperature);
 	// }
 
-	i2c_single_read(0x18, 0x0F);
-	i2c_single_read(0x18, 0x26);
-	i2c_single_read_bin(0x18, 0x27);
+	// i2c_single_read(0x18, 0x0F);
+	// i2c_single_read(0x18, 0x26);
+	// i2c_single_read_bin(0x18, 0x27);
 
 	printf("Starting flyback converter...\n");
 	t1pwm_init();
